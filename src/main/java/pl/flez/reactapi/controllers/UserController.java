@@ -2,19 +2,24 @@ package pl.flez.reactapi.controllers;
 
 import lombok.RequiredArgsConstructor;
 import org.bson.types.ObjectId;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import pl.flez.reactapi.data.User;
+import pl.flez.reactapi.services.RestClient;
 import pl.flez.reactapi.services.UserService;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import javax.validation.Valid;
+import java.security.Principal;
 
 @RestController
 @RequestMapping("user")
 @RequiredArgsConstructor
 public class UserController {
     private final UserService service;
+
+    private final RestClient restClient;
 
     @GetMapping
     public Flux<User> findAll(){
@@ -33,9 +38,10 @@ public class UserController {
         return service.deleteById(id);
     }
 
-    @GetMapping("/dwa/")
-    public Flux<User> findAll2(){
-        return service.findAll();
+    @GetMapping("/principal")
+    public Mono<Principal> principal(Mono<Principal> principal){
+        return principal;
     }
+
 
 }
