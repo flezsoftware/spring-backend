@@ -1,9 +1,5 @@
 package pl.flez.reactapi.services;
 
-import java.util.Base64;
-import java.util.Map;
-import java.util.stream.Collectors;
-
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -11,7 +7,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
-import javax.annotation.PostConstruct;
+import java.util.Base64;
+import java.util.stream.Collectors;
 
 @Component
 public class RestClient {
